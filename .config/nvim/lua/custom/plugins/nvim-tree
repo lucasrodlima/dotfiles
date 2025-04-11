@@ -1,0 +1,145 @@
+-- local map = vim.keymap.set
+--
+-- -- Function to set highlight groups
+-- local function set_highlights()
+--   vim.api.nvim_set_hl(0, 'NvimTreeIndentMarker', {
+--     fg = '#8891B1',
+--   })
+--   vim.api.nvim_set_hl(0, 'NvimTreeStatusLine', {
+--     bg = '#1e222a',
+--   })
+--   -- Set statusline background color
+--   vim.api.nvim_set_hl(0, 'NvimTreeEndOfBuffer', {
+--     fg = '#1e222a',
+--   }) -- Set end of buffer color to match background
+--
+--   -- Highlight selected file or folder
+--   vim.api.nvim_set_hl(0, 'NvimTreeCursorLine', {
+--     bg = '#383D4E',
+--   }) -- Set background color when a file or folder is selected
+--   vim.api.nvim_set_hl(0, 'NvimTreeCursorLineNr', {
+--     fg = '#abb2bf',
+--     bg = '#383D4E',
+--   }) -- Set foreground and background color of line number when a file or folder is selected
+-- end
+--
+-- local function tab_win_closed(winnr)
+--   local api = require 'nvim-tree.api'
+--   local tabnr = vim.api.nvim_win_get_tabpage(winnr)
+--   local bufnr = vim.api.nvim_win_get_buf(winnr)
+--   local buf_info = vim.fn.getbufinfo(bufnr)[1]
+--   local tab_wins = vim.tbl_filter(function(w)
+--     return w ~= winnr
+--   end, vim.api.nvim_tabpage_list_wins(tabnr))
+--   local tab_bufs = vim.tbl_map(vim.api.nvim_win_get_buf, tab_wins)
+--   if buf_info.name:match '.*NvimTree_%d*$' then -- close buffer was nvim tree
+--     -- Close all nvim tree on :q
+--     if not vim.tbl_isempty(tab_bufs) then -- and was not the last window (not closed automatically by code below)
+--       api.tree.close()
+--     end
+--   else -- else closed buffer was normal buffer
+--     if #tab_bufs == 1 then -- if there is only 1 buffer left in the tab
+--       local last_buf_info = vim.fn.getbufinfo(tab_bufs[1])[1]
+--       if last_buf_info.name:match '.*NvimTree_%d*$' then -- and that buffer is nvim tree
+--         vim.schedule(function()
+--           if #vim.api.nvim_list_wins() == 1 then -- if its the last buffer in vim
+--             vim.cmd 'quit' -- then close all of vim
+--           else -- else there are more tabs open
+--             vim.api.nvim_win_close(tab_wins[1], true) -- then close only the tab
+--           end
+--         end)
+--       end
+--     end
+--   end
+-- end
+--
+-- vim.api.nvim_create_autocmd('WinClosed', {
+--   callback = function()
+--     local winnr = tonumber(vim.fn.expand '<amatch>')
+--     vim.schedule_wrap(tab_win_closed(winnr))
+--   end,
+--   nested = true,
+-- })
+--
+-- return {
+--   'nvim-tree/nvim-tree.lua',
+--   config = function()
+--     -- dofile(vim.g.base46_cache .. "nvimtree")
+--
+--     local nvtree = require 'nvim-tree'
+--     local api = require 'nvim-tree.api'
+--
+--     -- Set custom highlights
+--     set_highlights()
+--
+--     -- Add custom mappings
+--     local function custom_on_attach(bufnr)
+--       local function opts(desc)
+--         return {
+--           desc = 'nvim-tree: ' .. desc,
+--           buffer = bufnr,
+--           noremap = true,
+--           silent = true,
+--           nowait = true,
+--         }
+--       end
+--
+--       api.config.mappings.default_on_attach(bufnr)
+--       vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent, opts 'Up')
+--       map('n', '+', api.tree.change_root_to_node, opts 'CD')
+--       map('n', '?', api.tree.toggle_help, opts 'Help')
+--       map('n', '<ESC>', api.tree.close, opts 'Close')
+--     end
+--
+--     -- Automatically open file upon creation
+--     api.events.subscribe(api.events.Event.FileCreated, function(file)
+--       vim.cmd('edit ' .. file.fname)
+--     end)
+--
+--     local HEIGHT_RATIO = 0.8
+--     local WIDTH_RATIO = 0.5
+--
+--     nvtree.setup {
+--       on_attach = custom_on_attach,
+--       sync_root_with_cwd = true,
+--       -- hijack_unnamed_buffer_when_opening = false,
+--       update_focused_file = {
+--         enable = true,
+--         update_cwd = true,
+--         ignore_list = {},
+--       },
+--       filters = {
+--         custom = { '^.git$' },
+--       },
+--       git = {
+--         enable = true,
+--       },
+--       renderer = {
+--         indent_markers = {
+--           enable = true,
+--           icons = {
+--             corner = '└',
+--             edge = '│',
+--             item = '├',
+--             none = ' ',
+--           },
+--         },
+--         highlight_git = 'none',
+--         icons = {},
+--       },
+--       view = {
+--         width = 30,
+--         side = 'left',
+--         signcolumn = 'no',
+--       },
+--       filesystem_watchers = {
+--         ignore_dirs = { 'node_modules' },
+--       },
+--     }
+--
+--     -- Key mappings
+--     map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', {
+--       desc = 'Toggle NvimTree',
+--     })
+--   end,
+-- }
