@@ -24,25 +24,4 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-# export PATH="$PATH:/app/bin/flatpak/"
-# alias pycharm="flatpak run com.jetbrains.PyCharm-Professional"
-
 eval "$(starship init bash)"
-
-# Generated for envman. Do not edit.
-# [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
-
-export EDITOR=nvim
-
-# lsd
-# alias ls="lsd -F"
-# alias la="lsd -AF"
-# alias ll="lsd -lF"
-# alias lla="lsd -lAF"
-# alias lg="lsd -F --group-dirs=first"
-
-export PATH="$PATH:$HOME/.local/opt/node/bin"
-
-fish
-# afetch
-
