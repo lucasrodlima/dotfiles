@@ -9,6 +9,8 @@ starship init fish | source
 
 set fish_greeting
 
+set EDITOR nvim
+
 # lsd
 alias ls "lsd -F"
 alias la "lsd -AF"
@@ -16,6 +18,9 @@ alias ll "lsd -lF"
 alias lla "lsd -lAF"
 alias lg "lsd -F --group-dirs=first"
 
+# set QT_QPA_PLATFORM wayland
+# set XDG_CURRENT_DESKTOP sway
+# set XDG_SESSION_DESKTOP sway
 
 
 function y
