@@ -18,6 +18,8 @@ PACKAGES=(
   ghostty
   mpv
   yazi
+  npm
+  firefox
 )
 
 # --- FUNCTIONS ---
@@ -87,4 +89,7 @@ set_editor_term
 git_setup
 
 echo "==> Setup completed! Dotfiles are in place."
+
+echo "[*] Opening Firefox to Google login page..."
+firefox https://accounts.google.com &
 
