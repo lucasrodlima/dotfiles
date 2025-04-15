@@ -68,6 +68,14 @@ set_editor_term() {
   fish -c 'set -Ux TERMINAL ghostty'
 }
 
+git_setup() {
+  git config --global user.name lucasrodlima
+  git config --global user.email lucasrodlima27@gmail.com
+  git config --global init.defaultBranch main
+  git config --global pull.rebase true
+}
+
+
 # --- MAIN ---
 
 echo "==> Starting setup for EndeavourOS..."
@@ -76,6 +84,7 @@ install_packages
 clone_dotfiles
 set_shell
 set_editor_term
+git_setup
 
 echo "==> Setup completed! Dotfiles are in place."
 
