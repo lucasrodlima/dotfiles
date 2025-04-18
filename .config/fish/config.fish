@@ -22,7 +22,7 @@ alias lg "lsd -F --group-dirs=first"
 # set XDG_CURRENT_DESKTOP sway
 # set XDG_SESSION_DESKTOP sway
 
-cat ~/.cache/wal/sequences
+cat ~/.cache/wal/sequences &
 
 
 function y
