@@ -11,6 +11,8 @@ set fish_greeting
 
 set EDITOR nvim
 
+fish_add_path /home/lucasrodlima/.cargo/bin
+
 # lsd
 alias ls "lsd -F"
 alias la "lsd -AF"
