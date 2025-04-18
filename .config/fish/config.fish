@@ -17,12 +17,13 @@ alias la "lsd -AF"
 alias ll "lsd -lF"
 alias lla "lsd -lAF"
 alias lg "lsd -F --group-dirs=first"
+alias c "clear"
 
 # set QT_QPA_PLATFORM wayland
 # set XDG_CURRENT_DESKTOP sway
 # set XDG_SESSION_DESKTOP sway
 
-cat ~/.cache/wal/sequences &
+# cat ~/.cache/wal/sequences &
 
 
 function y
