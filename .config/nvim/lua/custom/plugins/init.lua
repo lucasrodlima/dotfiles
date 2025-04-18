@@ -9,6 +9,6 @@ return {
   --   config = true,
   -- },
   -- {
-  --   -- 'xiyaowong/transparent.nvim',
+  --   'xiyaowong/transparent.nvim',
   -- },
 }

@@ -1,4 +1,4 @@
-theme = tokyonight_night
+# :)
 
 keybind = ctrl+w=close_surface
 
@@ -11,13 +11,20 @@ keybind = ctrl+l=goto_split:right
 
 keybind = ctrl+s=toggle_split_zoom
 
-background-opacity = 0.95
+background-opacity = 0.7
 window-decoration = auto
+background-blur = false
+# title = " "
 
-title = " "
-
+# theme = tokyonight_night
+# theme = electron-highlighter
 # theme = catppuccin-mocha
 # font-family = JetBrainsMono Nerd Font -calt
 
 window-height = 35
 window-width = 130
+# window-padding-x = 10
+# window-padding-y = 10
+window-padding-balance = true
+
+confirm-close-surface = false
